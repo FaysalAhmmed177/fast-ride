@@ -1,0 +1,11 @@
+.nav li{
+    list-style: none;
+    display: inline;
+    margin-left: 50px;
+    
+}
+.nav a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
