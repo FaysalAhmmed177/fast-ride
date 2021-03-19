@@ -12,6 +12,7 @@ import Login from './components/Login/Login';
 import NotMatch from './components/NotMatch/NotMatch';
 import { createContext, useState } from 'react';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Destination from './components/Destination/Destination';
 
 export const UserContext = createContext();
 
@@ -32,9 +33,9 @@ function App() {
             <Route path="/login">
               <Login />
             </Route>
-            <PrivateRoute path="/destination">
-
-            </PrivateRoute>
+            <Route path="/destination">
+              <Destination/>
+            </Route>
             <Route path="*">
               <NotMatch />
             </Route>
