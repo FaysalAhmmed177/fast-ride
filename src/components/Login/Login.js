@@ -109,24 +109,27 @@ const Login = () => {
         debugger;
         console.log(user.email, user.password);
         if (newUser && user.email && user.password) {
-            firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
-                .then((res) => {
-                    const newUserInfo = { ...user };
-                    newUserInfo.error = '';
-                    newUserInfo.success = true;
-                    setUser(newUserInfo);
-                    updateUserName(user.name);
-                    setLoggedInUser(newUserInfo);
-                    
-                })
-                .catch((error) => {
-                    const newUserInfo = { ...user };
-                    newUserInfo.error = error.message;
-                    newUserInfo.success = false;
-                    console.log(error);
-                    setUser(newUserInfo);
-                    setLoggedInUser(newUserInfo);
-                });
+            
+                firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+                    .then((res) => {
+                        const newUserInfo = { ...user };
+                        newUserInfo.error = '';
+                        newUserInfo.success = true;
+                        setUser(newUserInfo);
+                        updateUserName(user.name);
+                        setLoggedInUser(newUserInfo);
+
+                    })
+                    .catch((error) => {
+                        const newUserInfo = { ...user };
+                        newUserInfo.error = error.message;
+                        newUserInfo.success = false;
+                        console.log(error);
+                        setUser(newUserInfo);
+                        setLoggedInUser(newUserInfo);
+                    });
+            
+
         }
 
         if (!newUser && user.email && user.password) {
@@ -184,7 +187,8 @@ const Login = () => {
 
                     <div className="form-group">
                         <input type="password" name="password" onBlur={handleBlur} className="form-control" placeholder="Enter your password" />
-                    </div> <br />
+                    </div>
+                   
                     <div className="form-group">
                         <input type="submit" className="form-control bg-success" value={newUser ? "Sign up" : "Login"} />
                     </div><br />
