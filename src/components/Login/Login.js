@@ -5,6 +5,10 @@ import "firebase/auth";
 import firebaseConfig from '../../firebase.config';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+
 
 if (firebase.apps.length === 0) {
     // Initialize Firebase
@@ -49,7 +53,7 @@ const Login = () => {
                 setLoggedInUser(signedInUser);
                 setUser(signedInUser);
                 console.log(signedInUser);
-                history.location(from);
+                history.replace(from);
             }).catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
@@ -100,7 +104,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         debugger;
         console.log(user.email, user.password);
-        if (!newUser && user.email && user.password) {
+        if (newUser && user.email && user.password) {
             firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
                 .then((res) => {
                     const newUserInfo = { ...user };
@@ -118,7 +122,7 @@ const Login = () => {
                 });
         }
 
-        if (newUser && user.email && user.password) {
+        if (!newUser && user.email && user.password) {
             firebase.auth().signInWithEmailAndPassword(user.email, user.password)
                 .then((res) => {
                     // Signed in
@@ -157,11 +161,11 @@ const Login = () => {
     return (
         <div className="d-flex justify-content-center mt-3">
             <div className="login-form p-4">
-                <h3 className="text-center mb-2">{newUser ? 'Login' : 'Create an account'}</h3>
+                <h3 className="text-center mb-2">{newUser ? 'Create an account' : 'Login'}</h3>
                 <form onSubmit={handleSubmit}>
 
                     <div className="form-group">
-                        {!newUser && <input type="text" name="name" onBlur={handleBlur} className="form-control" placeholder="Enter your name" />}
+                        {newUser && <input type="text" name="name" onBlur={handleBlur} className="form-control" placeholder="Enter your name" />}
                     </div>
 
                     <div className="form-group">
@@ -172,18 +176,19 @@ const Login = () => {
                         <input type="password" name="password" onBlur={handleBlur} className="form-control" placeholder="Enter your password" />
                     </div> <br />
                     <div className="form-group">
-                        <input type="submit" className="form-control bg-success" value={newUser ? "Login" : "Sign up"} />
+                        <input type="submit" className="form-control bg-success" value={newUser ? "Sign up" : "Login"} />
                     </div><br />
                     <p style={{ color: 'red' }}>{user.error}</p>
-                    {user.success && <p style={{ color: 'green' }}>User {!newUser ? 'created' : 'logged in'} successfully</p>}
+                    {user.success && <p style={{ color: 'green' }}>User {newUser ? 'created' : 'logged in'} successfully</p>}
                     <hr />
-                    <p className="text-center">Already have an account? <input type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" id="" />
-                        <label htmlFor="newUser">Login</label></p>
+                    <p className="text-center">{newUser ? "Already have an account?" : "Don't have an account?"} <input type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" id="" />
+                        <label htmlFor="newUser">{newUser ? "Sign In" : "Sign up"}</label></p>
 
                     <p className="text-center">or</p>
-                    <button className="btn btn-danger w-100 mb-1 rounded-pill" onClick={() => handleGoogleSignIn}>Continue with Google</button>
-                    <button className="btn btn-primary w-100 rounded-pill" onClick={handleFbSignIn}>Continue with Facebook</button>
+
                 </form>
+                <button className="btn btn-danger w-100 mb-1 rounded-pill" onClick={ handleGoogleSignIn}><FontAwesomeIcon icon={faGoogle} />Continue with Google</button>
+                <button className="btn btn-primary w-100 rounded-pill" onClick={handleFbSignIn}><FontAwesomeIcon icon={faFacebook} />Continue with Facebook</button>
                 {/* form end here */}
             </div>
         </div>

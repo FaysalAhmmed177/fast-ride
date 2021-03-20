@@ -17,7 +17,7 @@ const Home = () => {
             <div className="container">
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     {
-                        vehiclesData.map((vehicle) => <div class="col-lg-3 col-sm-12"><Card vehicle={vehicle} id={vehicle.id}></Card></div>)
+                        vehiclesData.map((vehicle) => <div class="col-lg-3 col-sm-12"><Card vehicle={vehicle}></Card></div>)
                     }
                 </div>
             </div>
