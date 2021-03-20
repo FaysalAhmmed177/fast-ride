@@ -34,7 +34,7 @@ const Destination = (props) => {
 
         <div className="container">
             <div className="row mt-5">
-                {click ? <div className="col-lg-4 bg-secondary mr-3 rounded  p-3">
+                {click ? <div className="col-lg-4 bg-secondary mr-3 mb-5 rounded  p-3">
                     <div className="bg-warning p-3 rounded">
                         <h2>{address.from}</h2><br />
                         <p className="ml-3">To</p>
@@ -61,7 +61,7 @@ const Destination = (props) => {
                         <h3 className="ml-3">{capacity}</h3>
                         <h3 className="ml-3">${price}</h3>
                     </div>
-                </div> : <div className="col-lg-4 bg-secondary mr-3 rounded  p-3">
+                </div> : <div className="col-lg-4 bg-secondary mr-3 mb-5 rounded  p-3">
                     <form onSubmit={handleSubmit} >
 
                         <div className="form-group">
