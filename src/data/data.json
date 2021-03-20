@@ -2,23 +2,31 @@
     "id": 1,
     "name": "Bike",
     "image": "https://i.ibb.co/vDdMG6B/bike2.jpg",
-    "price": 67
+    "price": 67,
+    "icon": "https://i.ibb.co/rGtJwVk/peopleicon.png",
+    "capacity": 1
   },
    {
     "id": 2,
     "name": "Car",
     "image": "https://i.ibb.co/TT8jB4J/car1.webp",
-    "price": 67
+    "price": 67,
+    "icon": "https://i.ibb.co/rGtJwVk/peopleicon.png",
+    "capacity": 4
   }, 
   {
     "id": 3,
     "name": "Bus",
     "image": "https://i.ibb.co/dWDQKYN/bus1.png",
-    "price": 67
+    "price": 67,
+    "icon": "https://i.ibb.co/rGtJwVk/peopleicon.png",
+    "capacity": 10
   },
   {
     "id": 4,
     "name": "Train",
     "image": "https://i.ibb.co/WBNrx48/train1.jpg",
-    "price": 67
+    "price": 67,
+    "icon": "https://i.ibb.co/rGtJwVk/peopleicon.png",
+    "capacity": 20
   }]
