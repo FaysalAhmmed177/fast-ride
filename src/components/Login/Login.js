@@ -70,6 +70,8 @@ const Login = () => {
             .signInWithPopup(fbProvider)
             .then((result) => {
                 var user = result.user;
+                setLoggedInUser(user)
+                history.replace(from);
                 console.log(user);
             })
             .catch((error) => {
@@ -97,6 +99,8 @@ const Login = () => {
             const newUserInfo = { ...user };
             newUserInfo[e.target.name] = e.target.value;
             setUser(newUserInfo);
+            setLoggedInUser(newUserInfo);
+
         }
     }
 
@@ -112,6 +116,8 @@ const Login = () => {
                     newUserInfo.success = true;
                     setUser(newUserInfo);
                     updateUserName(user.name);
+                    setLoggedInUser(newUserInfo);
+                    
                 })
                 .catch((error) => {
                     const newUserInfo = { ...user };
@@ -119,6 +125,7 @@ const Login = () => {
                     newUserInfo.success = false;
                     console.log(error);
                     setUser(newUserInfo);
+                    setLoggedInUser(newUserInfo);
                 });
         }
 
@@ -130,6 +137,8 @@ const Login = () => {
                     const newUserInfo = { ...user };
                     newUserInfo.error = '';
                     newUserInfo.success = true;
+                    setLoggedInUser(newUserInfo);
+                    history.replace(from);
                     setUser(newUserInfo);
                     console.log('sign in user info', res.user);
                 })
@@ -137,6 +146,7 @@ const Login = () => {
                     const newUserInfo = { ...user };
                     newUserInfo.error = error.message;
                     newUserInfo.success = false;
+                    setLoggedInUser(newUserInfo);
                     setUser(newUserInfo);
                 });
         }
@@ -187,7 +197,7 @@ const Login = () => {
                     <p className="text-center">or</p>
 
                 </form>
-                <button className="btn btn-danger w-100 mb-1 rounded-pill" onClick={ handleGoogleSignIn}><FontAwesomeIcon icon={faGoogle} />Continue with Google</button>
+                <button className="btn btn-danger w-100 mb-1 rounded-pill" onClick={handleGoogleSignIn}><FontAwesomeIcon icon={faGoogle} />Continue with Google</button>
                 <button className="btn btn-primary w-100 rounded-pill" onClick={handleFbSignIn}><FontAwesomeIcon icon={faFacebook} />Continue with Facebook</button>
                 {/* form end here */}
             </div>

@@ -37,6 +37,7 @@ const Destination = (props) => {
                 {click ? <div className="col-lg-4 bg-secondary mr-3 rounded  p-3">
                     <div className="bg-warning p-3 rounded">
                         <h2>{address.from}</h2><br />
+                        <p className="ml-3">To</p>
                         <h2>{address.to}</h2>
                     </div>
                     <div className="vehicle-details bg-white d-flex justify-content-center p-3 rounded mt-3">
