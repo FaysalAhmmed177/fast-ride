@@ -1,20 +1,24 @@
 [{
     "id": 1,
     "name": "Bike",
-    "image": "https://i.ibb.co/vDdMG6B/bike2.jpg"
+    "image": "https://i.ibb.co/vDdMG6B/bike2.jpg",
+    "price": 67
   },
    {
     "id": 2,
     "name": "Car",
-    "image": "https://i.ibb.co/TT8jB4J/car1.webp"
+    "image": "https://i.ibb.co/TT8jB4J/car1.webp",
+    "price": 67
   }, 
   {
     "id": 3,
     "name": "Bus",
-    "image": "https://i.ibb.co/dWDQKYN/bus1.png"
+    "image": "https://i.ibb.co/dWDQKYN/bus1.png",
+    "price": 67
   },
   {
     "id": 4,
     "name": "Train",
-    "image": "https://i.ibb.co/WBNrx48/train1.jpg"
+    "image": "https://i.ibb.co/WBNrx48/train1.jpg",
+    "price": 67
   }]

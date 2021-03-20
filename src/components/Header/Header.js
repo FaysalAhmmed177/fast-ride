@@ -5,9 +5,7 @@ import './Header.css';
 
 const Header = () => {
     const history = useHistory();
-    const handleDestination = () => {
-      history.push('/destination')
-    }
+    
     return (
         <div>
             <div className="container">
@@ -22,7 +20,7 @@ const Header = () => {
                                     <Link to="/home">Home</Link>
                                 </li>
                                 <li>
-                                    <Link  onClick={handleDestination}>Destination</Link>
+                                    <Link >Destination</Link>
                                 </li>
                                 <li>
                                     <Link to="/blog">Blog</Link>
