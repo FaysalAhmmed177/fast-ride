@@ -7,7 +7,8 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
     width: '650px',
-    height: '450px'
+    height: '450px',
+    borderRadius: '5px'
 };
 
 const location = {
