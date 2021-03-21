@@ -7,7 +7,6 @@ import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 
 if (firebase.apps.length === 0) {
@@ -165,6 +164,7 @@ const Login = () => {
             photoURL: "https://example.com/jane-q-user/profile.jpg"
         }).then(function () {
             // Update successful.
+            
             console.log('User name updated successfully');
         }).catch(function (error) {
             // An error happened.

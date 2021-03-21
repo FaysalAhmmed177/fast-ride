@@ -1,8 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { useParams } from 'react-router';
 import fakeData from '../../data/data.json'
 import './Destination.css'
+
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+
+const containerStyle = {
+    width: '650px',
+    height: '450px'
+};
+
+const location = {
+    lat: 23.752913, lng: 90.377823
+};
+const onLoad = marker => {
+    console.log('marker: ', marker)
+}
+
 
 const Destination = (props) => {
     //const {id} = props.id;
@@ -18,11 +32,11 @@ const Destination = (props) => {
     const { name, image, price, icon, capacity } = vehicle;
     //console.log("Vehicle", vehicle);
 
-    const handleBlur = (e)=>{
-     console.log(e.target.name, e.target.value);
-     const newAddress = {...address};
-     newAddress[e.target.name] = e.target.value;
-     setAddress(newAddress);
+    const handleBlur = (e) => {
+        console.log(e.target.name, e.target.value);
+        const newAddress = { ...address };
+        newAddress[e.target.name] = e.target.value;
+        setAddress(newAddress);
     }
 
     const handleSubmit = (e) => {
@@ -80,21 +94,24 @@ const Destination = (props) => {
                     </form>
                 </div>}
                 <div >
-                    <Map google={props.google} zoom={14}>
-
-                        <Marker onClick={props.onMarkerClick}
-                            name={'Current location'} />
-
-                        <InfoWindow onClose={props.onInfoWindowClose}>
-
-                        </InfoWindow>
-                    </Map>
+                    <LoadScript
+                        googleMapsApiKey="AIzaSyCv1EFg-p3EMameFaDmd7FwNZ1XwFJFbLk"
+                    >
+                        <GoogleMap
+                            mapContainerStyle={containerStyle}
+                            center={location}
+                            zoom={16}
+                        >
+                            <Marker
+                                onLoad={onLoad}
+                                position={location}
+                            />
+                        </GoogleMap>
+                    </LoadScript>
                 </div>
             </div>
         </div>
     );
 };
 
-export default GoogleApiWrapper({
-    apiKey: ("AIzaSyCaUJI3zgtqz1Wqi-ghmO4LS1dQzctCmOc")
-})(Destination);
+export default React.memo(Destination)
